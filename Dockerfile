@@ -10,7 +10,7 @@
 #   > docker run --rm -i -t fedora_27-fluka bash
 #
 # Run image with volumes and X11 passthough 
-#   > docker run -i --net=host --env="DISPLAY" --volume="$HOME/.Xauthority:/root/.Xauthority:rw" -v $(pwd):/local_path -t
+#   > docker run -i --net=host --env="DISPLAY" --volume="$HOME/.Xauthority:/root/.Xauthority:rw" -v $(pwd):/local_path -t fedora_27-fluka bash
 
 FROM  fedora:27
 
