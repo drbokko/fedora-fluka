@@ -1,0 +1,17 @@
+*.*~
+*.inp
+*~
+*.pickle
+*.out
+*.dat
+*.*~
+ran*
+*.trk
+*.lis
+*.err
+*_fort.*
+*.log
+*.bnn
+*.pickle
+*.rpm
+*.gz
