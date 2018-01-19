@@ -21,10 +21,6 @@ RUN dnf install -y yum-plugin-ovl
 RUN dnf install -y make cpp gcc gcc-gfortran glibc-devel glibc-headers kernel-headers libgfortran emacs
 RUN dnf install -y git git-lfs subversion lsof wget sed gawk diffutils vim nano
 
-# Install flair from Vasilis's page
-RUN dnf install -y http://www.fluka.org/flair/flair-2.3-0.noarch.rpm
-RUN dnf install -y http://www.fluka.org/flair/flair-geoviewer-2.3-0.x86_64.rpm
-
 # Install root and pyroot
 RUN dnf install -y root* python2-root
 
@@ -42,3 +38,9 @@ RUN mkdir -p /opt/fluka
 
 ENV FLUFOR=gfortran
 ENV FLUPRO=/opt/fluka
+
+# Install flair from Vasilis's page
+RUN dnf install -y http://www.fluka.org/flair/flair-2.3-0.noarch.rpm
+RUN dnf install -y http://www.fluka.org/flair/flair-geoviewer-2.3-0.x86_64.rpm
+
+# One can now install fluka from the src https://www.fluka.org/packages/fluka2011.2c-linux-gfor64bitAA.tar.gz 
