@@ -1,0 +1,13 @@
+#!/bin/bash
+fluka_rpm="fluka-2011.2c-6.x86_64.rpm"
+
+if [ ! -e ${fluka_rpm} ]; then 
+   echo "Downloading Fluka"
+   echo "Please specify your Fluka user identification ('fuid', i.e. fuid-1234)"
+   echo -n "fuid: "
+   read fuid
+
+   wget --user=$fuid --ask-password  https://www.fluka.org/packages/${fluka_rpm}
+fi
+
+docker build -t my_fedora_27-fluka .
