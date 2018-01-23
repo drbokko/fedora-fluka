@@ -1,4 +1,9 @@
 #!/bin/bash
+# Script to build a Customized Docked Fedora 27 for running Fluka 
+# ========================================================
+# dr.vittorio.boccone@ieee.org
+# vittorio.boccone@dectris.com
+
 fluka_rpm="fluka-2011.2c-6.x86_64.rpm"
 
 if [ ! -e ${fluka_rpm} ]; then 

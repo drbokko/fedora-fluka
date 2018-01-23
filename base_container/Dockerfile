@@ -1,4 +1,4 @@
-# Docked Fedora for Fluka building (and running)
+# Docked Fedora for running (and maybe building) Fluka
 # ========================================================
 # dr.vittorio.boccone@ieee.org
 # vittorio.boccone@dectris.com
