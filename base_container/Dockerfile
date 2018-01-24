@@ -12,7 +12,7 @@
 # Run image with volumes and X11 passthough 
 #   > docker run -i --net=host --env="DISPLAY" --volume="$HOME/.Xauthority:/root/.Xauthority:rw" -v $(pwd):/local_path -t fedora_27-fluka bash
 
-FROM  fedora:27
+FROM fedora:27
 
 # RUN echo "http_caching=none" >> /etc/yum.conf
 RUN dnf clean all
@@ -20,9 +20,6 @@ RUN dnf install -y yum-plugin-ovl
 
 RUN dnf install -y make cpp gcc gcc-gfortran glibc-devel glibc-headers kernel-headers libgfortran emacs
 RUN dnf install -y git git-lfs subversion lsof wget sed gawk diffutils vim nano
-
-# Install root and pyroot
-RUN dnf install -y root* python2-root
 
 # Install ipython scipy 
 RUN dnf install -y scipy  ipython
