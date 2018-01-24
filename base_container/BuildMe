@@ -1,0 +1,7 @@
+#!/bin/bash
+# Script to build a Customized Docked Fedora 27 for running Fluka 
+# ========================================================
+# dr.vittorio.boccone@ieee.org
+# vittorio.boccone@dectris.com
+
+docker build -t fedora_27-fluka .
