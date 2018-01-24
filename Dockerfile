@@ -5,4 +5,9 @@
 
 FROM drbokko/fedora_27-fluka
 
-COPY *.rpm /tmp
+COPY *.tar.gz /tmp
+
+RUN tar -zxvf /tmp/*.tar.gz -C /opt/fluka
+RUN ar x /opt/fluka/libflukahp.a fluka.o
+RUN cd /opt/fluka; make
+
