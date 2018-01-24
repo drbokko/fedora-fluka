@@ -18,8 +18,6 @@ FROM  fedora:27
 RUN dnf clean all
 RUN dnf install -y yum-plugin-ovl
 
-RUN dnf install -y findutils
-
 RUN dnf install -y make cpp gcc gcc-gfortran glibc-devel glibc-headers kernel-headers libgfortran emacs
 RUN dnf install -y git git-lfs subversion lsof wget sed gawk diffutils vim nano
 
@@ -28,6 +26,7 @@ RUN dnf install -y root* python2-root
 
 # Install ipython scipy 
 RUN dnf install -y scipy  ipython
+RUN dnf install -y findutils
 
 # Add default user
 RUN groupadd -g 10000 fluka
