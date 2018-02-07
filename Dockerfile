@@ -28,3 +28,4 @@ USER flukauser
 ENV LOGNAME=flukauser
 ENV USER=flukauser
 ENV HOME /home/flukauser
+WORKDIR /home/flukauser

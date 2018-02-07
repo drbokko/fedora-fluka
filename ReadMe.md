@@ -75,12 +75,12 @@ During this phase the script will:
 It is possible to get a shell terminal to container and to pass trough the X11 connection along with some local folder. 
 This is done by issuing the following command:  
 ```
-docker run -i --rm --name fluka --net=host --env="DISPLAY" --volume="$HOME/.Xauthority:/root/.Xauthority:rw" -v $(pwd):/local_path -t my_fedora_27-fluka bash
+docker run -i --rm --name fluka --net=host --env="DISPLAY" --volume="$HOME/.Xauthority:/root/.Xauthority:rw" -v $(pwd):/shared_folder -t my_fedora_27-fluka bash
 ```
 
 Some info about the used options:
 - the ```-i``` and ```-t``` options are required to get an interactive shell.
-- the ```-v $(pwd):/local_path``` option create a shared pass through folder between the real system *pwd* and the folder ```/local_folder``` in the container. 
+- the ```-v $(pwd):/shared_path``` option create a shared pass through folder between the real system *pwd* and the folder ```/shared_folder``` in the container. 
 - the ```$(pwd)``` could be substituted by your home folder, or whatever folder you want to share with the container.
 - the ```--name fluka``` will assing the name fluka to the running container.
 Each container instance is identified by an unique CONTEINED ID code and an unique name. 
