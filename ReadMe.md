@@ -32,11 +32,11 @@ boccone@Vittorios-iMac:~/Repositories: git clone https://github.com/drbokko/fedo
 ```
 
 ### Building the image
-You can generate your personal Fluka image by running the ```BuildMe``` script in the root of the repository.
+You can generate your personal Fluka image by running the ```build_fluka_container.sh``` script in the root of the repository.
 Note: in order to generate you personal Fluka image you need to provide an active fuid and password).
 The installation might require a bit of time - from 1 to 10 minutes - depending on the speed of your internet connection.
 ```
-boccone@Vittorios-iMac:~/Repositories/fedora_27-fluka:(master)$ ./BuildMe 
+boccone@Vittorios-iMac:~/Repositories/fedora_27-fluka:(master)$ ./build_fluka_container.sh 
 Downloading Fluka
 Please specify your Fluka user identification ('fuid', i.e. fuid-1234)
 fuid: fuid-XXXX
