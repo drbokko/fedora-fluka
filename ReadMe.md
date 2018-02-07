@@ -1,7 +1,6 @@
 Instructions to run Fluka in a Docker Container under Fedora 27
 ========================================================
-(by A. Fontana & V. Boccone, 06.02.2018)
-
+A. Fontana, V. Boccone
 
 # Installing docker 
 You can install docker with your favourite package manager in linux.
@@ -35,21 +34,80 @@ boccone@Vittorios-iMac:~/Repositories: git clone https://github.com/drbokko/fedo
 ### Building the image
 You can generate your personal Fluka image by running the ```BuildMe``` script in the root of the repository.
 Note: in order to generate you personal Fluka image you need to provide an active fuid and password).
-The installation might require a bit of time depending on the speed of your internet connection.
+The installation might require a bit of time - from 1 to 10 minutes - depending on the speed of your internet connection.
 ```
-boccone@Vittorios-iMac:~/Repositories/fedora_27-fluka:[master *+]$ ./BuildMe 
+boccone@Vittorios-iMac:~/Repositories/fedora_27-fluka:(master)$ ./BuildMe 
+Downloading Fluka
+Please specify your Fluka user identification ('fuid', i.e. fuid-1234)
+fuid: fuid-XXXX
+Password for user 'fuid-XXXX': 
+--2018-02-07 21:30:15--  https://www.fluka.org/packages/fluka2011.2c-linux-gfor64bitAA.tar.gz
+Resolving www.fluka.org... 193.205.78.76
+Connecting to www.fluka.org|193.205.78.76|:443... connected.
+HTTP request sent, awaiting response... 401 Authorization Required
+Authentication selected: Basic realm="FLUKA download interface"
+Connecting to www.fluka.org|193.205.78.76|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 164993043 (157M) [application/x-gzip]
+Saving to: 'fluka2011.2c-linux-gfor64bitAA.tar.gz'
+
+fluka2011.2c-linux-gfor64bitAA.tar.gz                       100%[=========================================================================================================================================>] 157.35M   486KB/s    in 4m 48s  
+
+2018-02-07 21:35:03 (560 KB/s) - 'fluka2011.2c-linux-gfor64bitAA.tar.gz' saved [164993043/164993043]
+                                                                                                                                 ]   7.88M   611KB/s    eta 4m 17s 
 Sending build context to Docker daemon  165.2MB
 Step 1/11 : FROM drbokko/fedora_27-fluka
 latest: Pulling from drbokko/fedora_27-fluka
-a8ee583972c2: Downloading [=>                                                 ]  2.703MB/86.82MB
-3545dcebf26c: Download complete 
-93ad635dc92a: Downloading [>                                                  ]    528kB/157.7MB
-9a3ef07fe690: Waiting 
-0e0943e17c8a: Waiting 
-7b1ab264a1fb: Waiting 
-28a1f5892ffe: Waiting 
-ffce54e6416f: Waiting 
-c240375b746b: Waiting 
+a8ee583972c2: Pull complete 
+3545dcebf26c: Pull complete 
+93ad635dc92a: Pull complete 
+9a3ef07fe690: Pull complete 
+0e0943e17c8a: Pull complete 
+7b1ab264a1fb: Pull complete 
+28a1f5892ffe: Pull complete 
+ffce54e6416f: Pull complete 
+c240375b746b: Pull complete 
+Digest: sha256:fad5622b80442187bf662193da7f721ac1f87dccb8fc7298180fe8cc393a38f9
+Status: Downloaded newer image for drbokko/fedora_27-fluka:latest
+ ---> dac526ea8539
+Step 2/11 : RUN useradd fluka
+ ---> Running in a66543fc8e12
+Removing intermediate container a66543fc8e12
+ ---> a1006aff563f
+Step 3/11 : ENV LOGNAME=flukauser
+ ---> Running in 03240be9ea4b
+Removing intermediate container 03240be9ea4b
+ ---> 0bb59a4558b5
+Step 4/11 : ENV USER=flukauser
+ ---> Running in 65e515d4c3e6
+Removing intermediate container 65e515d4c3e6
+ ---> 1af325423280
+Step 5/11 : RUN mkdir -p /opt/fluka
+ ---> Running in 80612902d587
+Removing intermediate container 80612902d587
+ ---> 44242941c214
+Step 6/11 : RUN chown -R fluka:fluka /opt/fluka
+ ---> Running in 4b4497cd828a
+Removing intermediate container 4b4497cd828a
+ ---> 4bedf075d6d1
+Step 7/11 : ENV FLUFOR=gfortran
+ ---> Running in 2b271a6f6b9e
+Removing intermediate container 2b271a6f6b9e
+ ---> 80fedf17c4d6
+Step 8/11 : ENV FLUPRO=/opt/fluka
+ ---> Running in 870e23f7b01b
+Removing intermediate container 870e23f7b01b
+ ---> 2b13352b074b
+Step 9/11 : COPY *.tar.gz /tmp
+ ---> f455a18971dc
+Step 10/11 : RUN tar -zxvf /tmp/*.tar.gz -C /opt/fluka
+ ---> Running in f26404616586
+sigmapi.bin
+elasct.bin
+nuclear.bin
+fluodt.dat
+neuxsc-ind_260.bin
+brems_fin.bin
 
 [...] 
 
