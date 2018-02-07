@@ -8,8 +8,8 @@ FROM drbokko/fedora_27-fluka
 # Add default user
 RUN useradd fluka
 
-ENV LOGNAME=flukar
-ENV USER=fluka
+ENV LOGNAME=flukauser
+ENV USER=flukauser
 
 RUN mkdir -p /opt/fluka
 RUN chown -R fluka:fluka /opt/fluka
