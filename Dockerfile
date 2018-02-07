@@ -6,19 +6,25 @@
 FROM drbokko/fedora_27-fluka
 
 # Add default user
-RUN useradd flukauser
+RUN useradd -c 'Fluka user' -m -d /home/flukauser -s /bin/bash flukauser
+
+# Copy fluka to local folder
+COPY *.tar.gz /tmp
+
+RUN mkdir -p /opt/fluka
+RUN tar -zxvf /tmp/*.tar.gz -C /opt/fluka
+ENV FLUFOR=gfortran
+ENV FLUPRO=/opt/fluka
+RUN cd /opt/fluka; make
+
+RUN chown -R flukauser:flukauser /opt/fluka
+
+# Remove tmp file
+RUN rm -rf /tmp/*.gz
+
+# Default user
+USER flukauser
 
 ENV LOGNAME=flukauser
 ENV USER=flukauser
-
-RUN mkdir -p /opt/fluka
-RUN chown -R flukauser:flukauser /opt/fluka
-
-ENV FLUFOR=gfortran
-ENV FLUPRO=/opt/fluka
-
-COPY *.tar.gz /tmp
-
-RUN tar -zxvf /tmp/*.tar.gz -C /opt/fluka
-RUN cd /opt/fluka; make
-
+ENV HOME /home/flukauser
