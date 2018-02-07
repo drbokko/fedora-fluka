@@ -6,13 +6,13 @@
 FROM drbokko/fedora_27-fluka
 
 # Add default user
-RUN useradd fluka
+RUN useradd flukauser
 
 ENV LOGNAME=flukauser
 ENV USER=flukauser
 
 RUN mkdir -p /opt/fluka
-RUN chown -R fluka:fluka /opt/fluka
+RUN chown -R flukauser:flukauser /opt/fluka
 
 ENV FLUFOR=gfortran
 ENV FLUPRO=/opt/fluka

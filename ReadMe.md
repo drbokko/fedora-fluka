@@ -51,7 +51,7 @@ a8ee583972c2: Downloading [=>                                                 ] 
 ffce54e6416f: Waiting 
 c240375b746b: Waiting 
 
-[...]
+[...] 
 
 COLLECT_GCC_OPTIONS='-msse2' '-mfpmath=sse' '-fPIC' '-O3' '-g' '-mtune=generic' '-fexpensive-optimizations' '-funroll-loops' '-Wall' '-Wuninitialized' '-Wno-tabs' '-Wline-truncation' '-Wno-unused-function' '-Wno-unused-parameter' '-Wno-unused-dummy-argument' '-Wno-unused-variable' '-Wunused-label' '-Waggregate-return' '-Wcast-align' '-Wsystem-headers' '-ftrapping-math' '-frange-check' '-fbackslash' '-fbacktrace' '-ffpe-trap=invalid,zero,overflow' '-finit-local-zero' '-ffixed-form' '-frecord-marker=4' '-funderscoring' '-fno-automatic' '-fd-lines-as-comments' '-fbounds-check' '-I' '/opt/fluka/flukapro' '-v' '-o' 'usbmax' '-L/opt/fluka' '-shared-libgcc' '-march=x86-64'
 make[1]: Leaving directory '/opt/fluka/flutil'
@@ -59,6 +59,7 @@ Removing intermediate container 98a993cb3160
  ---> 71ac312f98d2
 Successfully built 71ac312f98d2
 Successfully tagged my_fedora_27-fluka:latest
+boccone@Vittorios-iMac:~/Repositories/fedora_27-fluka:(master)$ 
 ```
 
 During this phase the script will:
@@ -77,12 +78,20 @@ This is done by issuing the following command:
 docker run -i --rm --name fluka --net=host --env="DISPLAY" --volume="$HOME/.Xauthority:/root/.Xauthority:rw" -v $(pwd):/local_path -t my_fedora_27-fluka bash
 ```
 
-The ```-v $(pwd):/local_path``` option create a shared pass through folder between the real system *pwd* and the folder ```/local_folder``` in the container. 
-The ```$(pwd)``` could be substituted by your home folder, or whatever folder you want to share with the container.
-
-The ```--name fluka``` will assing the name fluka to the running container. 
+Some info about the used options:
+- the ```-i``` and ```-t``` options are required to get an interactive shell.
+- the ```-v $(pwd):/local_path``` option create a shared pass through folder between the real system *pwd* and the folder ```/local_folder``` in the container. 
+- the ```$(pwd)``` could be substituted by your home folder, or whatever folder you want to share with the container.
+- the ```--name fluka``` will assing the name fluka to the running container.
 Each container instance is identified by an unique CONTEINED ID code and an unique name. 
 If no name is specified during the container creation docker will generate a random name.
+- the ```--net=host --env="DISPLAY" --volume="$HOME/.Xauthority:/root/.Xauthority:rw"``` are for X11 forwarding
+
+Note: Depending on your Xserver configuration you might need to run:
+```
+xhost + 
+```
+to enable the running the X11 forwarding.
 
 ### Using the container
 Once in the docker container shell you could use the shell as if you would on a normal linux system.
