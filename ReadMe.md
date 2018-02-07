@@ -1,4 +1,4 @@
-Instructions to run Fluka in a Docker Container under Fedora 27
+Instructions to run Fluka in a Fedora 27 Docker Container 
 ========================================================
 A. Fontana, V. Boccone
 
