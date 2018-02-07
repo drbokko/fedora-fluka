@@ -16,3 +16,4 @@ ran*
 *.rpm
 *.gz
 *.flair
+.idea/*
