@@ -3,6 +3,8 @@ Docked Fedora for running (and maybe building) Fluka
 dr.vittorio.boccone@ieee.org
 vittorio.boccone@dectris.com
 
-Build your personal container based on drbokko/fedora_27-fluka:
-> cd base_container
-> docker build -t fedora_27-fluka .
+This is the source file of the drbokko/fedora_27-fluka image
+
+Typically this image is built by the Docker Hub continuous integration:
+https://hub.docker.com/r/drbokko/fedora_27-fluka/builds/
+
