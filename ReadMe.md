@@ -75,17 +75,19 @@ During this phase the script will:
 It is possible to get a shell terminal to container and to pass trough the X11 connection along with some local folder. 
 This is done by issuing the following command:  
 ```
-docker run -i --rm --name fluka --net=host --env="DISPLAY" --volume="$HOME/.Xauthority:/root/.Xauthority:rw" -v $(pwd):/shared_folder -t my_fedora_27-fluka bash
+boccone@Vittorios-iMac:~/Repositories/fedora_27-fluka:(master)$ docker run -i --rm --name fluka --net=host --env="DISPLAY" --volume="$HOME/.Xauthority:/root/.Xauthority:rw" -v $(pwd):/local_path -t my_fedora_27-fluka bash
+[flukauser@linuxkit-025000000001 ~]$ 
 ```
 
 Some info about the used options:
-- the ```-i``` and ```-t``` options are required to get an interactive shell.
-- the ```-v $(pwd):/shared_path``` option create a shared pass through folder between the real system *pwd* and the folder ```/shared_folder``` in the container. 
-- the ```$(pwd)``` could be substituted by your home folder, or whatever folder you want to share with the container.
+- the ```-i``` and ```-t``` options are required to get an interactive shell;
+- the ```-v $(pwd):/shared_path``` option create a shared pass through folder between the real system *pwd* and the folder ```/shared_folder``` in the container; 
+- the ```$(pwd)``` could be substituted by your home folder, or whatever folder you want to share with the container;
+- the ```--rm``` option will destroy the contained upon exit. All the local modification ();
 - the ```--name fluka``` will assing the name fluka to the running container.
 Each container instance is identified by an unique CONTEINED ID code and an unique name. 
-If no name is specified during the container creation docker will generate a random name.
-- the ```--net=host --env="DISPLAY" --volume="$HOME/.Xauthority:/root/.Xauthority:rw"``` are for X11 forwarding
+If no name is specified during the container creation docker will generate a random name;
+- the ```--net=host --env="DISPLAY" --volume="$HOME/.Xauthority:/root/.Xauthority:rw"``` are for X11 forwarding.
 
 Note: Depending on your Xserver configuration you might need to run:
 ```
@@ -97,29 +99,51 @@ to enable the running the X11 forwarding.
 Once in the docker container shell you could use the shell as if you would on a normal linux system.
 You can try, for example,  to run Fluka by:
 ```
-/home/flukauser/
-mkdir test
-cd test
-cp -r /opt/fluka/example.inp .
-$FLUPRO/flutil/rfluka -N0 -M1 example
+[flukauser@linuxkit-025000000001 ~]$ mkdir test
+[flukauser@linuxkit-025000000001 ~]$ cd test
+[flukauser@linuxkit-025000000001 test]$ cp -r /opt/fluka/example.inp .
+[flukauser@linuxkit-025000000001 test]$ $FLUPRO/flutil/rfluka -N0 -M1 example
+$TARGET_MACHINE = Linux
+$FLUPRO = /opt/fluka
+
+Initial seed copied from /opt/fluka
+Running fluka in /home/flukauser/test/fluka_25
+
+======================= Running FLUKA for cycle # 1 =======================
+
+Removing links
+Removing temporary files
+Saving output and random number seed
+Saving additional files generated
+     Moving fort.47 to /home/flukauser/test/example001_fort.47
+     Moving fort.48 to /home/flukauser/test/example001_fort.48
+     Moving fort.49 to /home/flukauser/test/example001_fort.49
+     Moving fort.50 to /home/flukauser/test/example001_fort.50
+     Moving fort.51 to /home/flukauser/test/example001_fort.51
+End of FLUKA run
 ```
 
 ### Working with containers
+Working with containers might not be so easy if are not used to the Command Line Interface in Linux. [Digital Ocean provides a nice primer [link here]](https://www.digitalocean.com/community/tutorials/working-with-docker-containers) 
+
 Each container instance is identified by an unique CONTEINED ID code and an unique name. 
 If no name is specified during the container creation docker will generate a random name.
 
-Once you finish working in your (interactive) container you can exit with the exit command.
-If no ```--rm``` option is specified at the container instantiation all the modification will per saved for future sessions
+If you are working in an interactive container you can terminate the shell by typing exit.
+If no ```--rm``` option was specified at the container instantiation the status container will not be lost and will besaved on the system.
 
-For further session the docker container can be restarted with the 
-CONTAINER ID code, obtained by:
+The list of the instantiated container (and their status) can be obtained by the following command:
 ```
 docker ps -a
 ```
 
-With the CONTAINER ID we can restart the Fluka session in Docker:
+An *Exited* container can be restarted with:
 ```
-docker start CONTAINER ID
-docker attach CONTAINER ID
+docker start <CONTAINER ID> or <CONTAINER NAME>
+```
+
+An *Running* but detached container can be reattached by:
+```
+docker attach <CONTAINER ID> or <CONTAINER NAME>
 ```
 
