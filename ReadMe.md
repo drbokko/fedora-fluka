@@ -171,8 +171,7 @@ docker run -i --rm --name fluka --net=host --env="DISPLAY" -v c:/docker:/local_p
 
 powershell:
 ```
-docker run -i --rm --name fluka --net=host --env="DISPLAY" --volume="$HOME/.Xauthority:/ro
-ot/.Xauthority:rw" -v c:/docker:/local_path -t my_fedora_27-fluka bash
+docker run -i --rm --name fluka --net=host --env="DISPLAY" --volume="$HOME/.Xauthority:/root/.Xauthority:rw" -v c:/docker:/local_path -t my_fedora_27-fluka bash
 ```
 
 ### Using the container
