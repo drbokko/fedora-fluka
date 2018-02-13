@@ -133,9 +133,9 @@ a standard Windows prompt or the ```build_fluka_container.ps1``` script in a pow
 ## Your first Fluka container 
 
 The philosophy of docker is very much different from the one of a typical virtual OS. The recommended way of working is 
-to keep the files on the host machine in a given directory (as /local_path in Linux or C:\docker in Windows) and 
-to mount it in the Docker session: in this way there is a unique copy of the files (in the host machine) and all the needed files 
-to run Fluka are in the image. 
+to keep the working files on the host machine in a given directory (as /local_path in Linux or C:\docker in Windows) and 
+to mount this directory in the Docker session: in this way there is a unique copy of the working files (in the host machine) 
+and all the needed packages to run Fluka are in the image. 
 
 ### Creating a container
 It is possible to get a shell terminal to container and to pass trough the X11 connection along with some local folder. 
