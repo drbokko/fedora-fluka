@@ -211,6 +211,7 @@ End of FLUKA run
 or, more simply:
 ```
 [flukauser@linuxkit-025000000001 ~]$ flair&
+```
 
 ### Working with containers
 Working with containers might not be so easy if are not used to the Command Line Interface in Linux. [Digital Ocean provides a nice primer [link here]](https://www.digitalocean.com/community/tutorials/working-with-docker-containers) 
