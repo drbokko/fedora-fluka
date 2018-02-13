@@ -205,7 +205,7 @@ End of FLUKA run
 ### Working with containers
 Working with containers might not be so easy if are not used to the Command Line Interface in Linux. [Digital Ocean provides a nice primer [link here]](https://www.digitalocean.com/community/tutorials/working-with-docker-containers) 
 
-Each container instance is identified by an unique CONTEINED ID code and an unique name. 
+Each container instance is identified by an unique CONTAINER ID code and an unique name. 
 If no name is specified during the container creation docker will generate a random name.
 
 If you are working in an interactive container you can terminate the shell by typing exit.
