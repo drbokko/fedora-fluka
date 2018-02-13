@@ -164,12 +164,12 @@ to enable the running the X11 forwarding.
 ### Additional info for Windows
 The commands to create a Fluka container in Windows with the following commands, assuming a docker root directory in C:\.
 
-prompt standard:
+- prompt standard:
 ```
 docker run -i --rm --name fluka --net=host --env="DISPLAY" -v c:/docker:/local_path -t my_fedora_27-fluka bash
 ```
 
-powershell:
+- powershell:
 ```
 docker run -i --rm --name fluka --net=host --env="DISPLAY" --volume="$HOME/.Xauthority:/root/.Xauthority:rw" -v c:/docker:/local_path -t my_fedora_27-fluka bash
 ```
