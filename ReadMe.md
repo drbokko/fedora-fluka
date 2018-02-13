@@ -126,8 +126,16 @@ During this phase the script will:
 - perform the necessary Fluka installation steps;
 - create a *flukauser* default user in the image.
 
+### Additional info for Windows
+Similarly, you can generate your personal Fluka image in Windows by running either the ```build_fluka_container.bat``` script in 
+a standard Windows prompt or the ```build_fluka_container.ps1``` script in a powershell window.
 
 ## Your first Fluka container 
+
+The philosophy of docker is very much different from a typical virtual OS. The recommended way of working is 
+to keep the files on the host machine in a given directory (as /local_path in Linux or C:\docker in Windows) and 
+to mount it in the Docker session: in this way there is a unique copy of the files in the host machine 
+and all the needed files to run Fluka are in the image. 
 
 ### Creating a container
 It is possible to get a shell terminal to container and to pass trough the X11 connection along with some local folder. 
@@ -152,6 +160,16 @@ Note: Depending on your Xserver configuration you might need to run:
 xhost + 
 ```
 to enable the running the X11 forwarding.
+
+### Additional info for Windows
+The commands to create a Fluka container in Windows with the following commands, assuming a docker root directory in C:\.
+
+prompt standard:
+docker run -i --rm --name fluka --net=host --env="DISPLAY" -v c:/docker:/local_path -t my_fedora_27-fluka bash
+
+powershell:
+docker run -i --rm --name fluka --net=host --env="DISPLAY" --volume="$HOME/.Xauthority:/ro
+ot/.Xauthority:rw" -v c:/docker:/local_path -t my_fedora_27-fluka bash
 
 ### Using the container
 Once in the docker container shell you could use the shell as if you would on a normal linux system.
