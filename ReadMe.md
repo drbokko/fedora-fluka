@@ -3,7 +3,7 @@ Instructions to run Fluka in a Fedora 27 Docker Container
 A. Fontana, V. Boccone
 
 # Installing docker 
-You can install docker with your favourite package manager in linux.
+You can install docker with your favourite package manager in linux or using standard tools in Windows and MacOS.
 
 The Docker website already provide wonderful installation instructions for the most common Linux flavours, Windows 10 and MacOS
 [https://www.docker.com/community-edition#/download](https://www.docker.com/community-edition#/download)
