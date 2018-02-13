@@ -174,6 +174,11 @@ docker run -i --rm --name fluka --net=host --env="DISPLAY" -v c:/docker:/local_p
 docker run -i --rm --name fluka --net=host --env="DISPLAY" --volume="$HOME/.Xauthority:/root/.Xauthority:rw" -v c:/docker:/local_path -t my_fedora_27-fluka bash
 ```
 
+Note: a X server, like for example Xming, is required to use flair and the following command (with your host and domain names) must be issued within the container:
+```
+export DISPLAY=hostname.domain:0.0 
+```
+
 ### Using the container
 Once in the docker container shell you could use the shell as if you would on a normal linux system.
 You can try, for example,  to run Fluka by:
