@@ -151,7 +151,7 @@ Some info about the used options:
 - the ```$(pwd)``` could be substituted by your home folder, or whatever folder you want to share with the container;
 - the ```--rm``` option will destroy the contained upon exit. All the local modification ();
 - the ```--name fluka``` will assing the name fluka to the running container.
-Each container instance is identified by an unique CONTEINED ID code and an unique name. 
+Each container instance is identified by an unique CONTAINER ID code and an unique name. 
 If no name is specified during the container creation docker will generate a random name;
 - the ```--net=host --env="DISPLAY" --volume="$HOME/.Xauthority:/root/.Xauthority:rw"``` are for X11 forwarding.
 
@@ -159,7 +159,7 @@ Note: Depending on your Xserver configuration you might need to run:
 ```
 xhost + 
 ```
-to enable the running the X11 forwarding.
+to enable the running of the X11 forwarding.
 
 ### Additional info for Windows
 The commands to create a Fluka container in Windows with the following commands, assuming a docker root directory in C:\.
@@ -179,6 +179,7 @@ Note: a running X server, like for example Xming, is required before starting do
 ```
 export DISPLAY=hostname.domain:0.0 
 ```
+to enable the running of the X11 forwarding.
 
 ### Using the container
 Once in the docker container shell you could use the shell as if you would on a normal linux system.
@@ -207,6 +208,9 @@ Saving additional files generated
      Moving fort.51 to /home/flukauser/test/example001_fort.51
 End of FLUKA run
 ```
+or, more simply:
+```
+[flukauser@linuxkit-025000000001 ~]$ flair&
 
 ### Working with containers
 Working with containers might not be so easy if are not used to the Command Line Interface in Linux. [Digital Ocean provides a nice primer [link here]](https://www.digitalocean.com/community/tutorials/working-with-docker-containers) 
