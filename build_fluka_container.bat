@@ -29,5 +29,6 @@ if not exist %fluka_package% (
 if not exist %fluka_package% (
    echo Errors downloading Fluka
    exit 1
+)
 
 docker build --build-arg fluka_package=%fluka_package% -t my_fedora_27-fluka .
