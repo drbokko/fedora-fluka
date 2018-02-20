@@ -128,8 +128,9 @@ During this phase the script will:
 
 ### Additional info for Windows
 Similarly, you can generate your personal Fluka image in Windows by running either the ```build_fluka_container.bat``` script in 
-a standard Windows prompt or the ```build_fluka_container.ps1``` script in a powershell window. In this case the creation of a 
-directory C:\tmp is required for the installation.
+a standard Windows prompt or the ```build_fluka_container.ps1``` script in a powershell window. 
+
+In this case the creation of a directory C:\tmp is required for the installation.
 
 ## Your first Fluka container 
 
