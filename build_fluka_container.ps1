@@ -6,7 +6,7 @@
 #
 # Windows version: andrea.fontana@pv.infn.it
 
-$fluka_version="2011.2c"
+$fluka_version="2011.2x"
 $fluka_respin="6"
 
 $fluka_rpm="fluka-$fluka_version-$fluka_respin.x86_64.rpm"

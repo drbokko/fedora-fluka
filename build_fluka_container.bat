@@ -6,7 +6,7 @@
 ::
 :: Windows version: andrea.fontana@pv.infn.it
 
-set fluka_version=2011.2c
+set fluka_version=2011.2x
 set fluka_respin=6
 
 set fluka_rpm=fluka-%fluka_version%-%fluka_respin%.x86_64.rpm
