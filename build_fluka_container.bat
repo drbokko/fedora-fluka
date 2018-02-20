@@ -19,7 +19,7 @@ echo %fluka_package%
 
 if not exist %fluka_package% ( 
    echo Downloading Fluka
-   echo Please specify your Fluka user identification ('fuid', i.e. fuid-1234 and password) in the dialog
+   echo Please specify your Fluka user identification ('fuid', i.e. fuid-1234 and password)
 :: to use wget for windows (if installed)
 ::   set /p fuid=fuid: 
 ::   wget --user=%fuid% --ask-password https://www.fluka.org/packages/%fluka_package%
