@@ -4,12 +4,13 @@
 # vittorio.boccone@dectris.com
 
 FROM drbokko/fedora_27-fluka
+ARG fluka_package
 
 # Add default user
 RUN useradd -c 'Fluka user' -m -d /home/flukauser -s /bin/bash flukauser
 
 # Copy fluka to local folder
-COPY *.tar.gz /tmp
+COPY $fluka_package /tmp
 
 RUN mkdir -p /opt/fluka
 RUN tar -zxvf /tmp/*.tar.gz -C /opt/fluka
