@@ -7,7 +7,7 @@
 # Windows version: andrea.fontana@pv.infn.it
 
 $fluka_version="2011.2x"
-$fluka_respin="0"
+$fluka_respin="2"
 
 # $fluka_rpm="fluka-$fluka_version-$fluka_respin.x86_64.rpm"
 # $fluka_gfor63_tarball="fluka$fluka_version-linux-gfor6.3-64bitAA.tar.gz"
