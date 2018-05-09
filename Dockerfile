@@ -2,6 +2,7 @@
 # ========================================================
 # dr.vittorio.boccone@ieee.org
 # vittorio.boccone@dectris.com
+# andrea.fontana@pv.infn.it
 
 FROM drbokko/fedora_27-fluka
 ARG fluka_package
