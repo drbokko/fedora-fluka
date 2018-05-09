@@ -7,7 +7,7 @@
 :: Windows version: andrea.fontana@pv.infn.it
 
 set fluka_version=2011.2x
-set fluka_respin=6
+set fluka_respin=2
 
 :: set fluka_rpm=fluka-%fluka_version%-%fluka_respin%.x86_64.rpm
 :: set fluka_gfor63_tarball=fluka%fluka_version%-linux-gfor6.3-64bitAA.tar.gz
