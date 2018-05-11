@@ -171,15 +171,15 @@ During this phase the script will:
 ### OS X Linux
 It is possible to get a shell terminal to container and to pass trough the X11 connection along with some local folder. 
 
-Execute from a terminal ```run_linux_dockerFLUKA.sh```: this script will start the Docker container with FLUKA and FLAIR installed.
+Execute from a terminal ```./run_linux_dockerFLUKA.sh```: this script will start the Docker container with FLUKA and FLAIR installed.
 
 ### Windows 10 Pro, Enterprise, and Education
 
-Execute from a powershell prompt ```run_win_dockerFLUKA.ps1```: this script will start the Docker container with FLUKA and FLAIR installed.
+Change directory to where you have installed the Docker scripts (e.g. C:\Docker) and execute from a powershell prompt ```.\run_win_dockerFLUKA.ps1```: this script will start the Docker container with FLUKA and FLAIR installed.
 
 ### Windows 10 Home (and possibly older Windows versions)
 
-Start as Administrator a Docker Quickstart Terminal and execute from /c/Users/docker
+Start as Administrator a Docker Quickstart Terminal and execute from the directory /c/Users/docker
 ```run_win_home_dockerFLUKA.sh```: this script will start the Docker container with FLUKA and FLAIR installed and ready to be used.
 
 Some info about the Docker options used in these scripts:
