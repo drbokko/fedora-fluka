@@ -20,11 +20,11 @@ Windows 10 Home does not enable hyper-v, which is required for Docker Community 
 Docker Toolbox provides a workaround. This is not optimal for performance, but it allows 
 to run FLUKA also on Windows 10 Home.
 
-### Post installation steps for both Windows 10 versions
+# Post installation steps for both Windows 10 versions
 
-# Enable powershell scripts execution
-# Allow Docker through the firewall
-# Start Xming (http://www.straightrunning.com/XmingNotes/) without access control
+## Enable powershell scripts execution
+## Allow Docker through the firewall
+## Start Xming (http://www.straightrunning.com/XmingNotes/) without access control
 
 ### Additional info for Linux
 Once docker is installed you need to add your user to the docker group.   
