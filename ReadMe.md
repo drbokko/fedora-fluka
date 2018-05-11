@@ -3,12 +3,28 @@ Instructions to run Fluka in a Fedora 27 Docker Container
 A. Fontana, V. Boccone
 
 # Installing docker 
-You can install docker with your favourite package manager in linux or using standard tools in Windows and MacOS.
+You can install Docker in the host OS by following the instructions 
+on the Docker website: these are available for the most common Linux 
+flavours, Windows 10 (Home and Professional Editions) and MacOS.
 
-The Docker website already provide wonderful installation instructions for the most common Linux flavours, Windows 10 and MacOS
-[https://www.docker.com/community-edition#/download](https://www.docker.com/community-edition#/download)
+### OS X, Linux, Windows 10 Pro, Enterprise, and Education
 
-Note: Docker in not anymore compatible with CentOS 6.x based system (RH6.x, Scientific Linux 6.x, etc...)
+Install Docker Community Edition:
+https://www.docker.com/community-edition
+
+### Windows 10 Home (and possibly older Windows versions)
+
+Install Docker Toolbox: https://www.docker.com/products/docker-toolbox
+
+Windows 10 Home does not enable hyper-v, which is required for Docker Community Edition. 
+Docker Toolbox provides a workaround. This is not optimal for performance, but it allows 
+to run FLUKA also on Windows 10 Home.
+
+### Post installation steps for both Windows 10 versions
+
+# Enable powershell scripts execution
+# Allow Docker through the firewall
+# Start Xming (http://www.straightrunning.com/XmingNotes/) without access control
 
 ### Additional info for Linux
 Once docker is installed you need to add your user to the docker group.   
@@ -32,9 +48,27 @@ boccone@Vittorios-iMac:~/Repositories: git clone https://github.com/drbokko/fedo
 ```
 
 ### Building the image
-You can generate your personal Fluka image in Linux by running the ```build_fluka_container.sh``` script in the root of the repository.
+
+### OS X, Linux
+
+You can generate your personal Fluka image by running in a terminal the ```build_linux_dockerFLUKA.sh``` script in the root of the repository.
 Note: in order to generate you personal Fluka image you need to provide an active fuid and password).
 The installation might require a bit of time - from 1 to 10 minutes - depending on the speed of your internet connection.
+
+### Windows 10 Pro, Enterprise, and Education
+
+Create the directory C:\docker, start a powershell prompt in C:\docker and execute ```build_win_dockerFLUKA.ps1```
+This script will prompt for your FLUKA credentials (fuid-xxxx and password), download the latest public FLUKA release and install it in a Fedora 27 based Docker container.
+Then execute ```run_win_dockerFLUKA.ps1```: this script will start the Docker container with FLUKA and FLAIR installed.
+
+### Windows 10 Home (and possibly older Windows versions)
+
+Create the directory C:\Users\docker, start a powershell prompt in C:\Users\docker (mandatory!) and execute ```build_win_dockerFLUKA.ps1```
+This script will prompt for your FLUKA credentials (fuid-xxxx and password), download the latest public FLUKA release and install it in a Fedora 27 based Docker container.
+Start as Administrator a Docker Quickstart Terminal and execute from /c/Users/docker
+```run_win_home_dockerFLUKA.sh```: this script will start the Docker container with FLUKA and FLAIR installed and ready to be used.
+
+The typical output of this step is as follows:
 ```
 boccone@Vittorios-iMac:~/Repositories/fedora_27-fluka:(master)$ ./build_fluka_container.sh 
 Downloading Fluka
@@ -126,28 +160,25 @@ During this phase the script will:
 - perform the necessary Fluka installation steps;
 - create a *flukauser* default user in the image.
 
-### Additional info for Windows
-Similarly, you can generate your personal Fluka image in Windows by running either the ```build_fluka_container.bat``` script in 
-a standard Windows prompt or the ```build_fluka_container.ps1``` script in a powershell window. 
-
-In this case the creation of a directory C:\tmp is required for the installation.
 
 ## Your first Fluka container 
 
-The philosophy of docker is very much different from the one of a typical virtual OS. The recommended way of working is 
-to keep the working files on the host machine in a given directory (as /local_path in Linux or C:\docker in Windows) and 
-to mount this directory in the Docker session: in this way there is a unique copy of the working files (in the host machine) 
-and all the needed packages to run Fluka are in the image. 
-
 ### Creating a container
-It is possible to get a shell terminal to container and to pass trough the X11 connection along with some local folder. 
-This is done by issuing the following command:  
-```
-boccone@Vittorios-iMac:~/Repositories/fedora_27-fluka:(master)$ docker run -i --rm --name fluka --net=host --env="DISPLAY" --volume="$HOME/.Xauthority:/root/.Xauthority:rw" -v $(pwd):/local_path -t my_fedora_27-fluka bash
-[flukauser@linuxkit-025000000001 ~]$ 
-```
 
-Some info about the used options:
+### OS X Linux
+It is possible to get a shell terminal to container and to pass trough the X11 connection along with some local folder. 
+Execute from a terminal ```run_linux_dockerFLUKA.sh```: this script will start the Docker container with FLUKA and FLAIR installed.
+
+### Windows 10 Pro, Enterprise, and Education
+
+Execute from a powershell prompt ```run_win_dockerFLUKA.ps1```: this script will start the Docker container with FLUKA and FLAIR installed.
+
+### Windows 10 Home (and possibly older Windows versions)
+
+Start as Administrator a Docker Quickstart Terminal and execute from /c/Users/docker
+```run_win_home_dockerFLUKA.sh```: this script will start the Docker container with FLUKA and FLAIR installed and ready to be used.
+
+Some info about the Docker options used in these scripts:
 - the ```-i``` and ```-t``` options are required to get an interactive shell;
 - the ```-v $(pwd):/shared_path``` option create a shared pass through folder between the real system *pwd* and the folder ```/shared_folder``` in the container; 
 - the ```$(pwd)``` could be substituted by your home folder, or whatever folder you want to share with the container;
@@ -161,31 +192,11 @@ Note: Depending on your Xserver configuration you might need to run:
 ```
 xhost + 
 ```
-to enable the running of the X11 forwarding.
-
-### Additional info for Windows
-The commands to create a Fluka container in Windows with the following commands, assuming a docker root directory in C:\.
-
-- standard prompt:
-```
-docker run -i --rm --name fluka --net=host --env="DISPLAY" -v c:/docker:/local_path -t my_fedora_27-fluka bash
-```
-
-- powershell:
-```
-docker run -i --rm --name fluka --net=host --env="DISPLAY" --volume="$HOME/.Xauthority:/root/.Xauthority:rw" -v c:/docker:/local_path -t my_fedora_27-fluka bash
-```
-
-Note: a running X server, like for example Xming, is required before starting docker to use flair and the following command 
-(with your host and domain names) must be issued within the container:
-```
-export DISPLAY=hostname.domain:0.0 
-```
-to enable the running of the X11 forwarding.
+to enable the running the X11 forwarding.
 
 ### Using the container
 Once in the docker container shell you could use the shell as if you would on a normal linux system.
-You can try, for example,  to run Fluka by:
+You can try, for example, to run Fluka by:
 ```
 [flukauser@linuxkit-025000000001 ~]$ mkdir test
 [flukauser@linuxkit-025000000001 ~]$ cd test
@@ -210,10 +221,8 @@ Saving additional files generated
      Moving fort.51 to /home/flukauser/test/example001_fort.51
 End of FLUKA run
 ```
-or, more simply:
-```
-[flukauser@linuxkit-025000000001 ~]$ flair&
-```
+
+or also running Flair.
 
 ### Working with containers
 Working with containers might not be so easy if are not used to the Command Line Interface in Linux. [Digital Ocean provides a nice primer [link here]](https://www.digitalocean.com/community/tutorials/working-with-docker-containers) 
