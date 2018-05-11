@@ -57,14 +57,17 @@ The installation might require a bit of time - from 1 to 10 minutes - depending 
 
 ### Windows 10 Pro, Enterprise, and Education
 
-Create the directory C:\docker, start a powershell prompt in C:\docker and execute ```build_win_dockerFLUKA.ps1```
-This script will prompt for your FLUKA credentials (fuid-xxxx and password), download the latest public FLUKA release and install it in a Fedora 27 based Docker container.
+Create the directory C:\docker, start a powershell prompt in C:\docker and execute ```.\build_win_dockerFLUKA.ps1```
+This script will prompt for your FLUKA credentials (fuid-xxxx and password), download the latest public FLUKA release and 
+install it in a Fedora 27 based Docker container.
+
 Then execute ```.\run_win_dockerFLUKA.ps1```: this script will start the Docker container with FLUKA and FLAIR installed.
 
 ### Windows 10 Home (and possibly older Windows versions)
 
 Create the directory C:\Users\docker, start a powershell prompt in C:\Users\docker (mandatory!) and execute ```.\build_win_dockerFLUKA.ps1```
 This script will prompt for your FLUKA credentials (fuid-xxxx and password), download the latest public FLUKA release and install it in a Fedora 27 based Docker container.
+
 Start as Administrator a Docker Quickstart Terminal and execute from /c/Users/docker
 ```./run_win_home_dockerFLUKA.sh```: this script will start the Docker container with FLUKA and FLAIR installed and ready to be used.
 
@@ -167,6 +170,7 @@ During this phase the script will:
 
 ### OS X Linux
 It is possible to get a shell terminal to container and to pass trough the X11 connection along with some local folder. 
+
 Execute from a terminal ```run_linux_dockerFLUKA.sh```: this script will start the Docker container with FLUKA and FLAIR installed.
 
 ### Windows 10 Pro, Enterprise, and Education
