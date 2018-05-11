@@ -2,7 +2,7 @@ Instructions to run Fluka in a Fedora 27 Docker Container
 ========================================================
 V. Boccone, A. Fontana
 
-# Installing docker 
+# Installing Docker 
 You can install Docker in the host OS by following the instructions 
 on the Docker website: these are available for the most common Linux 
 flavours, Windows 10 (Home and Professional Editions) and MacOS.
@@ -22,9 +22,9 @@ to run FLUKA also on Windows 10 Home.
 
 ## Post installation steps for both Windows 10 versions
 
-### Enable powershell scripts execution
-### Allow Docker through the firewall
-### Start Xming (http://www.straightrunning.com/XmingNotes/) without access control
+- Enable powershell scripts execution
+- Allow Docker through the firewall
+- Start Xming (http://www.straightrunning.com/XmingNotes/) without access control
 
 ### Additional info for Linux
 Once docker is installed you need to add your user to the docker group.   
