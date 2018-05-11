@@ -1,6 +1,6 @@
 Instructions to run Fluka in a Fedora 27 Docker Container 
 ========================================================
-A. Fontana, V. Boccone
+V. Boccone, A. Fontana
 
 # Installing docker 
 You can install Docker in the host OS by following the instructions 
