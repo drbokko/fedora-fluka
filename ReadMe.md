@@ -180,7 +180,7 @@ Change directory to where you have installed the Docker scripts (e.g. C:\Docker)
 ### Windows 10 Home (and possibly older Windows versions)
 
 Start as Administrator a Docker Quickstart Terminal and execute from the directory /c/Users/docker
-```.\run_fluka_container_on_windows10_home.sh```: this script will start the Docker container with FLUKA and FLAIR installed and ready to be used.
+```./run_fluka_container_on_windows10_home.sh```: this script will start the Docker container with FLUKA and FLAIR installed and ready to be used.
 
 Some info about the Docker options used in these scripts:
 - the ```-i``` and ```-t``` options are required to get an interactive shell;
