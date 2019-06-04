@@ -1,16 +1,13 @@
 #!/bin/bash
-# Script to build a Customized Docked Fedora 27 for running Fluka 
+# Script to build a Customized Docked Fedora 30 for running Fluka
 # ========================================================
 # dr.vittorio.boccone@ieee.org
 # vittorio.boccone@dectris.com
 
 fluka_version="2011.2x"
-fluka_respin="2"
+fluka_respin="6"
 
-# fluka_rpm="fluka-${fluka_version}-${fluka_respin}.x86_64.rpm"
-# fluka_gfor63_tarball="fluka${fluka_version}-linux-gfor6.3-64bitAA.tar.gz"
 fluka_tarball="fluka${fluka_version}-linux-gfor64bitAA.tar.gz"
-
 
 fluka_package=$fluka_tarball
 
@@ -28,4 +25,4 @@ if [ ! -e ${fluka_package} ]; then
   exit 1
 fi
 
-docker build --build-arg fluka_package=$fluka_package -t my_fedora_27-fluka .
+docker build --build-arg fluka_package=$fluka_package -t my_fedora_for_fluka .

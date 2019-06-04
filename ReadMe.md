@@ -12,14 +12,6 @@ flavours, Windows 10 (Home and Professional Editions) and MacOS.
 Install Docker Community Edition:
 https://www.docker.com/community-edition
 
-### Windows 10 Home (and possibly older Windows versions)
-
-Install Docker Toolbox: https://www.docker.com/products/docker-toolbox
-
-Windows 10 Home does not enable hyper-v, which is required for Docker Community Edition. 
-Docker Toolbox provides a workaround. This is not optimal for performance, but it allows 
-to run FLUKA also on Windows 10 Home.
-
 ## Post installation steps for both Windows 10 versions
 
 - Enable powershell scripts execution
@@ -54,22 +46,6 @@ boccone@Vittorios-iMac:~/Repositories: git clone https://github.com/drbokko/fedo
 You can generate your personal Fluka image by running in a terminal the ```build_fluka_container.sh``` script in the root of the repository.
 Note: in order to generate you personal Fluka image you need to provide an active fuid and password).
 The installation might require a bit of time - from 1 to 10 minutes - depending on the speed of your internet connection.
-
-### Windows 10 Pro, Enterprise, and Education
-
-Create the directory C:\docker, start a powershell prompt in C:\docker and execute ```.\build_fluka_container_on_windows10.ps1```
-This script will prompt for your FLUKA credentials (fuid-xxxx and password), download the latest public FLUKA release and 
-install it in a Fedora 27 based Docker container.
-
-Then execute ```.\run_fluka_container_on_windows10.ps1```: this script will start the Docker container with FLUKA and FLAIR installed.
-
-### Windows 10 Home (and possibly older Windows versions)
-
-Create the directory C:\Users\docker, start a powershell prompt in C:\Users\docker (mandatory!) and execute ```.\build_fluka_container_on_windows10.ps1```
-This script will prompt for your FLUKA credentials (fuid-xxxx and password), download the latest public FLUKA release and install it in a Fedora 27 based Docker container.
-
-Start as Administrator a Docker Quickstart Terminal and execute from /c/Users/docker
-```./run_fluka_container_on_windows10_home.sh```: this script will start the Docker container with FLUKA and FLAIR installed and ready to be used.
 
 The typical output of this step is as follows:
 ```
@@ -172,15 +148,6 @@ During this phase the script will:
 It is possible to get a shell terminal to container and to pass trough the X11 connection along with some local folder. 
 
 Execute from a terminal ```./run_fluka_container.sh```: this script will start the Docker container with FLUKA and FLAIR installed.
-
-### Windows 10 Pro, Enterprise, and Education
-
-Change directory to where you have installed the Docker scripts (e.g. C:\Docker) and execute from a powershell prompt ```.\run_fluka_container_on_windows10.ps1```: this script will start the Docker container with FLUKA and FLAIR installed.
-
-### Windows 10 Home (and possibly older Windows versions)
-
-Start as Administrator a Docker Quickstart Terminal and execute from the directory /c/Users/docker
-```./run_fluka_container_on_windows10_home.sh```: this script will start the Docker container with FLUKA and FLAIR installed and ready to be used.
 
 Some info about the Docker options used in these scripts:
 - the ```-i``` and ```-t``` options are required to get an interactive shell;

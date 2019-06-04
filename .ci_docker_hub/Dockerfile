@@ -4,15 +4,15 @@
 # vittorio.boccone@dectris.com
 #
 # Rebuild: 
-#   > docker build -t fedora_27-fluka . 
+#   > docker build -t fedora_for_fluka .
 #
 # Run image (w/o mount point volumes):
-#   > docker run --rm -i -t fedora_27-fluka bash
+#   > docker run --rm -i -t fedora_for_fluka bash
 #
 # Run image with volumes and X11 passthough 
-#   > docker run -i --net=host --env="DISPLAY" --volume="$HOME/.Xauthority:/root/.Xauthority:rw" -v $(pwd):/local_path -t fedora_27-fluka bash
+#   > docker run -i --net=host --env="DISPLAY" --volume="$HOME/.Xauthority:/root/.Xauthority:rw" -v $(pwd):/local_path -t fedora_for_fluka bash
 
-FROM fedora:27
+FROM fedora:30
 
 # RUN echo "http_caching=none" >> /etc/yum.conf
 RUN dnf clean all
@@ -22,8 +22,7 @@ RUN dnf install -y make cpp gcc gcc-gfortran glibc-devel glibc-headers kernel-he
 RUN dnf install -y git git-lfs subversion lsof wget sed gawk diffutils vim nano
 
 # Install ipython scipy 
-RUN dnf install -y scipy  ipython
-RUN dnf install -y findutils
+RUN dnf install -y scipy findutils
 
 # Install flair from Vasilis's page
 RUN dnf install -y http://www.fluka.org/flair/flair-2.3-0.noarch.rpm

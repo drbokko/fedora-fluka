@@ -4,7 +4,7 @@
 # vittorio.boccone@dectris.com
 # andrea.fontana@pv.infn.it
 
-FROM drbokko/fedora_27-fluka
+FROM drbokko/fedora_for_fluka
 ARG fluka_package
 
 # Add default user
