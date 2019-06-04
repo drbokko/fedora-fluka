@@ -15,12 +15,14 @@ CURRENT_DIR=${PWD}
 RED='\033[0;31m'
 BLUE='\033[0;34m'
 LBLUE='\033[1;34m'
+GREEN='\033[0;32m'
+LGREEN='\033[1;32m'
 NC='\033[0m' # No Color
+
 echo -e "${LBLUE}*****************************************************${NC}"
 echo -e "${LBLUE}** Starting interactive Docker container for Fluka **${NC}"
 echo -e "${LBLUE}*****************************************************${NC}"
 echo ""
-echo "Setting up user ${USER_NAME} (UID:${USER_ID}, GID:${GROUP_ID}, home:${HOME_DIR})"
 
 DOCKER_IMAGE_NAME="fedora_with_fluka"
 
@@ -41,16 +43,14 @@ EXISTING_CONTAINERS=$(docker ps -q -f name=${CONTAINER_NAME})
 NUMBER_OF_EXISTING_CONTAINERS=$(echo $EXISTING_CONTAINERS | wc -w | cut -d ' ' -f 1)
 
 if [ ! "${EXISTING_CONTAINERS}" ]; then
+  echo "Setting up user ${USER_NAME} (UID:${USER_ID}, GID:${GROUP_ID}, home:${HOME_DIR})"
   # run your container
   docker run --rm -d --privileged -ti ${DOCKER_OPTIONS} --name $CONTAINER_NAME --workdir ${HOME_DIR} ${DOCKER_IMAGE_NAME} ${DOCKER_REMOTE_COMMAND}
-  echo "Welcome to your FLUKA/Flair container [${CONTAINER_NAME}]"
-  echo "Detach from container:      > exit"
-  echo "Reattach to container:      docker exec -it ${CONTAINER_NAME} /usr/local/bin/docker-login.sh"
-  docker exec -it ${CONTAINER_NAME} /usr/local/bin/docker-login.sh
+
 else
   if [ "$NUMBER_OF_EXISTING_CONTAINERS" -eq "1" ]; then
-    echo "Reattaching container"
-    docker exec -it ${CONTAINER_NAME} /usr/local/bin/docker-login.sh
+    echo -e "${GREEN}Reattaching [${LGREEN}${CONTAINER_NAME}${GREEN}] container${NC}"
+
   else
     echo -e "${RED}Cannot create container${NC}"
     echo -e "${RED}The containers with id"
@@ -61,3 +61,11 @@ else
     exit 1
   fi
 fi
+
+echo "Welcome to your FLUKA/Flair container [${CONTAINER_NAME}]"
+echo ""
+echo "Type 'exit' to detach from container and leave the simulations running"
+echo ""
+echo "After detaching you can destroy the container (simulation with stops) with"
+echo "> docker rm -f fluka-vittorio.boccone"
+docker exec -it ${CONTAINER_NAME} /usr/local/bin/docker-login.sh
