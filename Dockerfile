@@ -25,10 +25,3 @@ RUN cd /opt/fluka; make
 # Remove tmp file
 RUN rm -rf /tmp/*.gz
 
-# Default user
-#USER flukauser
-
-#ENV LOGNAME=flukauser
-#ENV USER=flukauser
-#ENV HOME /home/flukauser
-#WORKDIR /home/flukauser
