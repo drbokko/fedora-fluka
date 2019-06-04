@@ -13,7 +13,6 @@ RUN useradd -c 'Fluka user' -m -d /home/flukauser -s /bin/bash flukauser
 
 # Copy fluka to local folder
 COPY $fluka_package /tmp
-COPY docker-startup.sh /usr/local/bin/
 
 RUN mkdir -p /opt/fluka
 RUN tar -zxvf /tmp/*.tar.gz -C /opt/fluka
