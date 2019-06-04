@@ -5,18 +5,12 @@ V. Boccone, A. Fontana
 # Installing Docker 
 You can install Docker in the host OS by following the instructions 
 on the Docker website: these are available for the most common Linux 
-flavours, Windows 10 (Home and Professional Editions) and MacOS.
+flavours and MacOS.
 
-### OS X, Linux, Windows 10 Pro, Enterprise, and Education
+### OS X, Linux
 
 Install Docker Community Edition:
 https://www.docker.com/community-edition
-
-## Post installation steps for both Windows 10 versions
-
-- Enable powershell scripts execution
-- Allow Docker through the firewall
-- Start Xming (http://www.straightrunning.com/XmingNotes/) without access control
 
 ### Additional info for Linux
 Once docker is installed you need to add your user to the docker group.   
