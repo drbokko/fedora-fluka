@@ -5,7 +5,7 @@
 # andrea.fontana@pv.infn.it
 # docker run -i --net=host --env="DISPLAY" --volume="$HOME/.Xauthority:/root/.Xauthority:rw" -v $(pwd):/local_path -t my_fedora_for_fluka bash
 
-FROM fedora_for_fluka
+FROM drbokko/fedora_for_fluka
 ARG fluka_package
 
 # Add default user
