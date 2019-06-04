@@ -3,8 +3,9 @@
 # dr.vittorio.boccone@ieee.org
 # vittorio.boccone@dectris.com
 # andrea.fontana@pv.infn.it
+# docker run -i --net=host --env="DISPLAY" --volume="$HOME/.Xauthority:/root/.Xauthority:rw" -v $(pwd):/local_path -t my_fedora_for_fluka bash
 
-FROM drbokko/fedora_for_fluka
+FROM fedora_for_fluka
 ARG fluka_package
 
 # Add default user
@@ -12,6 +13,7 @@ RUN useradd -c 'Fluka user' -m -d /home/flukauser -s /bin/bash flukauser
 
 # Copy fluka to local folder
 COPY $fluka_package /tmp
+COPY docker-startup.sh /usr/local/bin/
 
 RUN mkdir -p /opt/fluka
 RUN tar -zxvf /tmp/*.tar.gz -C /opt/fluka
@@ -19,15 +21,15 @@ ENV FLUFOR=gfortran
 ENV FLUPRO=/opt/fluka
 RUN cd /opt/fluka; make
 
-RUN chown -R flukauser:flukauser /opt/fluka
+# RUN chown -R flukauser:flukauser /opt/fluka
 
 # Remove tmp file
 RUN rm -rf /tmp/*.gz
 
 # Default user
-USER flukauser
+#USER flukauser
 
-ENV LOGNAME=flukauser
-ENV USER=flukauser
-ENV HOME /home/flukauser
-WORKDIR /home/flukauser
+#ENV LOGNAME=flukauser
+#ENV USER=flukauser
+#ENV HOME /home/flukauser
+#WORKDIR /home/flukauser
