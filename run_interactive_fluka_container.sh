@@ -30,8 +30,8 @@ echo ""
 DOCKER_IMAGE_NAME="fedora_with_fluka"
 
 DOCKER_OPTIONS="-v ${HOME_DIR}:${HOME_DIR}
-    -v ${PWD}/.X11-unix:/tmp/.X11-unix -e DISPLAY=${DISPLAY}
-    -v ${PWD}/.Xauthority:/home/xterm/.Xauthority
+    -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=${DISPLAY}
+    -v ${HOME}/.Xauthority:${HOME}/.Xauthority
     -e USER_NAME=${USER_NAME} -e USER_ID=${USER_ID} -e GROUP_ID=${GROUP_ID} -e HOME_DIR=${HOME_DIR}"
 
 DOCKER_REMOTE_COMMAND="/usr/local/bin/docker-startup.sh"
