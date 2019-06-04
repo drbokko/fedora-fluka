@@ -30,5 +30,17 @@ RUN dnf install -y http://www.fluka.org/flair/flair-geoviewer-2.3-0.x86_64.rpm
 
 RUN dnf install -y htop grep procps-ng
 # One can now install fluka from the src https://www.fluka.org/packages/fluka2011.2c-linux-gfor64bitAA.tar.gz
-COPY docker-startup.sh /usr/local/bin/docker-startup.sh
-COPY docker-login.sh /usr/local/bin/docker-login.sh
+RUN echo $'#!/bin/bash\n\
+echo "Setting up home folder pass through"\n\
+set -xe\n\
+groupadd -g ${GROUP_ID} ${USER_NAME}\n\
+useradd -u ${USER_ID} -g ${USER_NAME}  ${USER_NAME} --no-create-home\n\
+echo "${USER_NAME} ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers\n\
+su ${USER_NAME}' > /usr/local/bin/docker-startup.sh
+
+RUN echo $'#!/bin/bash\n\
+set -xe\n\
+su ${USER_NAME}'> /usr/local/bin/docker-login.sh
+
+RUN chmod +x /usr/local/bin/docker-startup.sh
+RUN chmod +x /usr/local/bin/docker-login.sh

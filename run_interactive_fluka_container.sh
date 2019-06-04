@@ -22,7 +22,7 @@ echo -e "${LBLUE}*****************************************************${NC}"
 echo ""
 echo "Setting up user ${USER_NAME} (UID:${USER_ID}, GID:${GROUP_ID}, home:${HOME_DIR})"
 
-DOCKER_IMAGE_NAME="my_fedora_for_fluka"
+DOCKER_IMAGE_NAME="fedora_with_fluka"
 
 DOCKER_OPTIONS="-v ${PWD}/docker-startup.sh:/docker-startup.sh -v ${HOME_DIR}:${HOME_DIR}
     -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=${DISPLAY}

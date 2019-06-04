@@ -25,4 +25,4 @@ if [ ! -e ${fluka_package} ]; then
   exit 1
 fi
 
-docker build --build-arg fluka_package=$fluka_package -t my_fedora_for_fluka .
+docker build --build-arg fluka_package=$fluka_package -t fedora_with_fluka:$fluka_version.$fluka_respin -t fedora_with_fluka .
