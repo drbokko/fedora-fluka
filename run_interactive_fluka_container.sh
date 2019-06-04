@@ -24,10 +24,14 @@ echo -e "${LBLUE}** Starting interactive Docker container for Fluka **${NC}"
 echo -e "${LBLUE}*****************************************************${NC}"
 echo ""
 
+# Get the DISPLAY slot and create the new DISPLAY variable
+# Prepare target env
+
 DOCKER_IMAGE_NAME="fedora_with_fluka"
 
-DOCKER_OPTIONS="-v ${PWD}/docker-startup.sh:/docker-startup.sh -v ${HOME_DIR}:${HOME_DIR}
-    -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=${DISPLAY}
+DOCKER_OPTIONS="-v ${HOME_DIR}:${HOME_DIR}
+    -v ${PWD}/.X11-unix:/tmp/.X11-unix -e DISPLAY=${DISPLAY}
+    -v ${PWD}/.Xauthority:/home/xterm/.Xauthority
     -e USER_NAME=${USER_NAME} -e USER_ID=${USER_ID} -e GROUP_ID=${GROUP_ID} -e HOME_DIR=${HOME_DIR}"
 
 DOCKER_REMOTE_COMMAND="/usr/local/bin/docker-startup.sh"
@@ -45,7 +49,7 @@ NUMBER_OF_EXISTING_CONTAINERS=$(echo $EXISTING_CONTAINERS | wc -w | cut -d ' ' -
 if [ ! "${EXISTING_CONTAINERS}" ]; then
   echo "Setting up user ${USER_NAME} (UID:${USER_ID}, GID:${GROUP_ID}, home:${HOME_DIR})"
   # run your container
-  docker run --rm -d --privileged -ti ${DOCKER_OPTIONS} --name $CONTAINER_NAME --workdir ${HOME_DIR} ${DOCKER_IMAGE_NAME} ${DOCKER_REMOTE_COMMAND}
+  docker run --rm -d --privileged -ti ${DOCKER_OPTIONS} --name ${CONTAINER_NAME} --workdir ${HOME_DIR} ${DOCKER_IMAGE_NAME} ${DOCKER_REMOTE_COMMAND}
 
 else
   if [ "$NUMBER_OF_EXISTING_CONTAINERS" -eq "1" ]; then
@@ -67,5 +71,5 @@ echo ""
 echo "Type 'exit' to detach from container and leave the simulations running"
 echo ""
 echo "After detaching you can destroy the container (simulation with stops) with"
-echo "> docker rm -f fluka-vittorio.boccone"
+echo " docker rm -f fluka-vittorio.boccone"
 docker exec -it ${CONTAINER_NAME} /usr/local/bin/docker-login.sh
