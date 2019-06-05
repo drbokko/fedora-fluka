@@ -9,7 +9,7 @@ FROM drbokko/fedora_for_fluka
 ARG fluka_package
 
 # Add default user
-RUN useradd -c 'Fluka user' -m -d /home/flukauser -s /bin/bash flukauser
+RUN useradd -c 'Fluka user' -m -d /home/fluka -s /bin/bash fluka
 
 # Copy fluka to local folder
 COPY $fluka_package /tmp
@@ -20,8 +20,8 @@ ENV FLUFOR=gfortran
 ENV FLUPRO=/opt/fluka
 RUN cd /opt/fluka; make
 
-# RUN chown -R flukauser:flukauser /opt/fluka
-
+RUN chown -R fluka:fluka /opt/fluka
+RUN chmod -R g+rw /opt/fluka
 # Remove tmp file
 RUN rm -rf /tmp/*.gz
 
