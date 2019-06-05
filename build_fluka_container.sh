@@ -10,6 +10,7 @@ fluka_respin="6"
 fluka_tarball="fluka${fluka_version}-linux-gfor64bitAA.tar.gz"
 
 fluka_package=$fluka_tarball
+fedora_for_fluka_repo="drbokko/fedora_for_fluka"
 
 if [ ! -e ${fluka_package} ]; then 
    echo "Downloading Fluka"
@@ -25,4 +26,4 @@ if [ ! -e ${fluka_package} ]; then
   exit 1
 fi
 
-docker build --build-arg fluka_package=$fluka_package -t fedora_with_fluka:$fluka_version.$fluka_respin -t fedora_with_fluka .
+docker build --build-arg fedora_for_fluka_repo=$fedora_for_fluka_repo --build-arg fluka_package=$fluka_package -t fedora_with_fluka:$fluka_version.$fluka_respin -t fedora_with_fluka .

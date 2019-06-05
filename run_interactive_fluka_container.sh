@@ -32,6 +32,7 @@ DOCKER_IMAGE_NAME="fedora_with_fluka"
 DOCKER_OPTIONS="-v ${HOME_DIR}:${HOME_DIR}
     -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=${DISPLAY}
     -v ${HOME}/.Xauthority:${HOME}/.Xauthority
+    -v /nfs/:/nfs/
     -e USER_NAME=${USER_NAME} -e USER_ID=${USER_ID} -e GROUP_ID=${GROUP_ID} -e HOME_DIR=${HOME_DIR}"
 
 DOCKER_REMOTE_COMMAND="/usr/local/bin/docker-startup.sh"
@@ -70,6 +71,6 @@ echo "Welcome to your FLUKA/Flair container [${CONTAINER_NAME}]"
 echo ""
 echo "Type 'exit' to detach from container and leave the simulations running"
 echo ""
-echo "After detaching you can destroy the container (simulation with stops) with"
+echo "After detaching you can destroy the container with"
 echo " docker rm -f fluka-vittorio.boccone"
 docker exec -it ${CONTAINER_NAME} /usr/local/bin/docker-login.sh

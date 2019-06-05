@@ -14,6 +14,10 @@
 
 FROM fedora:30
 
+# Add default user
+RUN useradd -c 'Fluka user' -m -d /home/fluka -s /bin/bash fluka
+RUN mkdir -p /opt/fluka
+
 # RUN echo "http_caching=none" >> /etc/yum.conf
 RUN dnf clean all
 RUN dnf install -y yum-plugin-ovl
@@ -34,9 +38,8 @@ RUN echo $'#!/bin/bash\n\
 echo "Setting up home folder pass through"\n\
 set -xe\n\
 groupadd -g ${GROUP_ID} ${USER_NAME}\n\
-useradd -u ${USER_ID} -g ${USER_NAME}  ${USER_NAME} --no-create-home\n\
+useradd -u ${USER_ID} -g ${USER_NAME} -G fluka ${USER_NAME} --no-create-home\n\
 echo "${USER_NAME} ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers\n\
-usermod -a -G fluka ${USER_NAME}\n\
 su ${USER_NAME}' > /usr/local/bin/docker-startup.sh
 
 RUN echo $'#!/bin/bash\n\
@@ -45,3 +48,4 @@ su ${USER_NAME}'> /usr/local/bin/docker-login.sh
 
 RUN chmod +x /usr/local/bin/docker-startup.sh
 RUN chmod +x /usr/local/bin/docker-login.sh
+
