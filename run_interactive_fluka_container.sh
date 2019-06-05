@@ -31,15 +31,15 @@ if [ -z "$1" ]
 else
   if [ "$1" == "-v" ]
     then
-      ADDITIONAL_VOLUMES=$2
+      ADDITIONAL_VOLUMES="-v $2"
   else
+    echo -e "${RED}Option '${1}' not supported${NC}"
     exit 1
   fi
 fi
 
 # Get the DISPLAY slot and create the new DISPLAY variable
 # Prepare target env
--v /nfs/:/nfs/
 
 DOCKER_IMAGE_NAME="fedora_with_fluka"
 
@@ -87,4 +87,4 @@ echo "Type 'exit' to detach from container and leave the simulations running"
 echo ""
 echo "After detaching you can destroy the container with"
 echo " docker rm -f ${CONTAINER_NAME}"
-docker exec -it ${CONTAINER_NAME} /usr/local/bin/docker-login.sh && echo -e "Detaching from container. All the started processes will still be running\n""After detaching you can destroy the container with\n""docker rm -f ${CONTAINER_NAME}"
+docker exec -it ${CONTAINER_NAME} /usr/local/bin/docker-login.sh && echo -e "${LGREEN}Detaching from container. All the started processes will still be running\n""After detaching you can destroy the container with\n${GREEN}docker rm -f ${CONTAINER_NAME}${NC}"
