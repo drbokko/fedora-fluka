@@ -24,15 +24,29 @@ echo -e "${LBLUE}** Starting interactive Docker container for Fluka **${NC}"
 echo -e "${LBLUE}*****************************************************${NC}"
 echo ""
 
+if [ -z "$1" ]
+  then
+    echo "No argument supplied"
+    ADDITIONAL_VOLUMES=""
+else
+  if [ "$1" == "-v" ]
+    then
+      ADDITIONAL_VOLUMES=$2
+  else
+    exit 1
+  fi
+fi
+
 # Get the DISPLAY slot and create the new DISPLAY variable
 # Prepare target env
+-v /nfs/:/nfs/
 
 DOCKER_IMAGE_NAME="fedora_with_fluka"
 
 DOCKER_OPTIONS="-v ${HOME_DIR}:${HOME_DIR}
     -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=${DISPLAY}
     -v ${HOME}/.Xauthority:${HOME}/.Xauthority
-    -v /nfs/:/nfs/
+    ${ADDITIONAL_VOLUMES}
     -e USER_NAME=${USER_NAME} -e USER_ID=${USER_ID} -e GROUP_ID=${GROUP_ID} -e HOME_DIR=${HOME_DIR}"
 
 DOCKER_REMOTE_COMMAND="/usr/local/bin/docker-startup.sh"
@@ -73,5 +87,4 @@ echo "Type 'exit' to detach from container and leave the simulations running"
 echo ""
 echo "After detaching you can destroy the container with"
 echo " docker rm -f ${CONTAINER_NAME}"
-docker exec -it ${CONTAINER_NAME} /usr/local/bin/docker-login.sh &&
-echo "Detaching from container. All the started processes will still be running\n""After detaching you can destroy the container with\n""docker rm -f ${CONTAINER_NAME}"
+docker exec -it ${CONTAINER_NAME} /usr/local/bin/docker-login.sh && echo -e "Detaching from container. All the started processes will still be running\n""After detaching you can destroy the container with\n""docker rm -f ${CONTAINER_NAME}"
