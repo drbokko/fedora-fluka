@@ -10,7 +10,20 @@ fluka_respin="6"
 fluka_tarball="fluka${fluka_version}-linux-gfor64bitAA.tar.gz"
 
 fluka_package=$fluka_tarball
-fedora_for_fluka_repo="drbokko/fedora_for_fluka"
+
+if [ -z "$1" ]
+  then
+    echo "No argument supplied"
+    fedora_for_fluka_repo="drbokko/fedora_for_fluka"
+fi
+echo $1
+
+if [ "$1" == "local" ]
+  then
+    fedora_for_fluka_repo="fedora_for_fluka"
+else
+  exit 1
+fi
 
 if [ ! -e ${fluka_package} ]; then 
    echo "Downloading Fluka"

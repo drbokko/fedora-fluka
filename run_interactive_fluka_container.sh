@@ -50,8 +50,8 @@ NUMBER_OF_EXISTING_CONTAINERS=$(echo $EXISTING_CONTAINERS | wc -w | cut -d ' ' -
 if [ ! "${EXISTING_CONTAINERS}" ]; then
   echo "Setting up user ${USER_NAME} (UID:${USER_ID}, GID:${GROUP_ID}, home:${HOME_DIR})"
   # run your container
+  echo docker run --rm -d --privileged -ti ${DOCKER_OPTIONS} --name ${CONTAINER_NAME} --workdir ${HOME_DIR} ${DOCKER_IMAGE_NAME} ${DOCKER_REMOTE_COMMAND}
   docker run --rm -d --privileged -ti ${DOCKER_OPTIONS} --name ${CONTAINER_NAME} --workdir ${HOME_DIR} ${DOCKER_IMAGE_NAME} ${DOCKER_REMOTE_COMMAND}
-
 else
   if [ "$NUMBER_OF_EXISTING_CONTAINERS" -eq "1" ]; then
     echo -e "${GREEN}Reattaching [${LGREEN}${CONTAINER_NAME}${GREEN}] container${NC}"
@@ -72,5 +72,6 @@ echo ""
 echo "Type 'exit' to detach from container and leave the simulations running"
 echo ""
 echo "After detaching you can destroy the container with"
-echo " docker rm -f fluka-vittorio.boccone"
-docker exec -it ${CONTAINER_NAME} /usr/local/bin/docker-login.sh
+echo " docker rm -f ${CONTAINER_NAME}"
+docker exec -it ${CONTAINER_NAME} /usr/local/bin/docker-login.sh &&
+echo "Detaching from container. All the started processes will still be running\n""After detaching you can destroy the container with\n""docker rm -f ${CONTAINER_NAME}"

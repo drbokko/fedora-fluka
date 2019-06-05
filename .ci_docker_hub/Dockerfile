@@ -40,7 +40,7 @@ set -xe\n\
 groupadd -g ${GROUP_ID} ${USER_NAME}\n\
 useradd -u ${USER_ID} -g ${USER_NAME} -G fluka ${USER_NAME} --no-create-home\n\
 echo "${USER_NAME} ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers\n\
-su ${USER_NAME}' > /usr/local/bin/docker-startup.sh
+su root' > /usr/local/bin/docker-startup.sh
 
 RUN echo $'#!/bin/bash\n\
 set -xe\n\
