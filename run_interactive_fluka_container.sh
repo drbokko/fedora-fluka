@@ -23,6 +23,7 @@ echo -e "${LBLUE}*****************************************************${NC}"
 echo -e "${LBLUE}** Starting interactive Docker container for Fluka **${NC}"
 echo -e "${LBLUE}*****************************************************${NC}"
 echo ""
+xhost +
 
 if [ -z "$1" ]
   then
