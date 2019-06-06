@@ -64,8 +64,8 @@ NUMBER_OF_EXISTING_CONTAINERS=$(echo $EXISTING_CONTAINERS | wc -w | cut -d ' ' -
 if [ ! "${EXISTING_CONTAINERS}" ]; then
   echo "Setting up user ${USER_NAME} (UID:${USER_ID}, GID:${GROUP_ID}, home:${HOME_DIR})"
   # run your container
-  echo docker run --rm -d --privileged -ti ${DOCKER_OPTIONS} --name ${CONTAINER_NAME} --workdir ${HOME_DIR} ${DOCKER_IMAGE_NAME} ${DOCKER_REMOTE_COMMAND}
-  docker run --rm -d --privileged -ti ${DOCKER_OPTIONS} --name ${CONTAINER_NAME} --workdir ${HOME_DIR} ${DOCKER_IMAGE_NAME} ${DOCKER_REMOTE_COMMAND}
+  echo docker run --rm -d --privileged -ti ${DOCKER_OPTIONS} --name ${CONTAINER_NAME} -P -p --workdir ${HOME_DIR} ${DOCKER_IMAGE_NAME} ${DOCKER_REMOTE_COMMAND}
+  docker run --rm -d --privileged -ti ${DOCKER_OPTIONS} --name ${CONTAINER_NAME} -P --workdir ${HOME_DIR} ${DOCKER_IMAGE_NAME} ${DOCKER_REMOTE_COMMAND}
 else
   if [ "$NUMBER_OF_EXISTING_CONTAINERS" -eq "1" ]; then
     echo -e "${GREEN}Reattaching [${LGREEN}${CONTAINER_NAME}${GREEN}] container${NC}"
