@@ -42,7 +42,7 @@ fi
 # Get the DISPLAY slot and create the new DISPLAY variable
 # Prepare target env
 
-DOCKER_IMAGE_NAME="fedora_with_fluka"
+DOCKER_IMAGE_NAME="fedora_with_fluka_for_${USER_NAME}"
 
 DOCKER_OPTIONS="-v ${HOME_DIR}:${HOME_DIR}
     -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=${DISPLAY}
