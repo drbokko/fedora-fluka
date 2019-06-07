@@ -25,12 +25,12 @@ The scripts for the generation of a basic Fluka-compatible image are open source
 
 ### Download
 You can download the latest version of the scripts from the github repository:   
-[https://github.com/drbokko/fedora_27-fluka/archive/master.zip](https://github.com/drbokko/fedora_27-fluka/archive/master.zip)
+[https://github.com/drbokko/fedora_27-fluka/archive/master.zip](https://github.com/drbokko/fedora_for_fluka/archive/master.zip)
 
 ### Checkout
 You can alternatively checkout the full repository with the scripts from the github repository:   
 ```
-boccone@Vittorios-iMac:~/Repositories: git clone https://github.com/drbokko/fedora_27-fluka
+boccone@Vittorios-iMac:~/Repositories: git clone https://github.com/drbokko/fedora_for_fluka
 ```
 
 ### Building the image
@@ -43,7 +43,7 @@ The installation might require a bit of time - from 1 to 10 minutes - depending 
 
 The typical output of this step is as follows:
 ```
-boccone@Vittorios-iMac:~/Repositories/fedora_27-fluka:(master)$ ./build_fluka_container.sh 
+boccone@Vittorios-iMac:~/Repositories/fedora_for_fluka:(master)$ ./build_fluka_container.sh 
 Downloading Fluka
 Please specify your Fluka user identification ('fuid', i.e. fuid-1234)
 fuid: fuid-XXXX
@@ -123,8 +123,8 @@ make[1]: Leaving directory '/opt/fluka/flutil'
 Removing intermediate container 98a993cb3160
  ---> 71ac312f98d2
 Successfully built 71ac312f98d2
-Successfully tagged my_fedora_27-fluka:latest
-boccone@Vittorios-iMac:~/Repositories/fedora_27-fluka:(master)$ 
+Successfully tagged fedora_with_fluka_for_boccone:latest
+boccone@Vittorios-iMac:~/Repositories/fedora_for_fluka:(master)$ 
 ```
 
 During this phase the script will:
@@ -141,7 +141,7 @@ During this phase the script will:
 ### OS X Linux
 It is possible to get a shell terminal to container and to pass trough the X11 connection along with some local folder. 
 
-Execute from a terminal ```./run_fluka_container.sh```: this script will start the Docker container with FLUKA and FLAIR installed.
+Execute from a terminal ```./run_interactive_fluka_container.sh```: this script will start the Docker container with FLUKA and FLAIR installed.
 
 Some info about the Docker options used in these scripts:
 - the ```-i``` and ```-t``` options are required to get an interactive shell;

@@ -25,20 +25,17 @@ echo -e "${LBLUE}*****************************************************${NC}"
 echo ""
 xhost +
 
-if [ -z "$1" ]
-  then
-    echo "No argument supplied"
-    ADDITIONAL_VOLUMES=""
+if [ -z "$1" ]; then
+  echo "No argument supplied"
+  ADDITIONAL_VOLUMES=""
 else
-  if [ "$1" == "-v" ]
-    then
+  if [ "$1" == "-v" ]; then
       ADDITIONAL_VOLUMES="-v $2"
   else
     echo -e "${RED}Option '${1}' not supported${NC}"
     exit 1
   fi
 fi
-
 # Get the DISPLAY slot and create the new DISPLAY variable
 # Prepare target env
 
