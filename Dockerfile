@@ -30,7 +30,7 @@ RUN chmod g+x /opt/fluka/flutil/pawlevphi.kumac
 # Remove tmp file
 RUN rm -rf /tmp/*.gz
 
-# RUN dnf install -y net-tools
+RUN dnf install -y net-tools sudo
 # RUN dnf -y update && dnf -y install openssh-server passwd && dnf clean all
 
 # EXPOSE 22
