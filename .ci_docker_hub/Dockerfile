@@ -12,7 +12,7 @@
 # Run image with volumes and X11 passthough 
 #   > docker run -i --net=host --env="DISPLAY" --volume="$HOME/.Xauthority:/root/.Xauthority:rw" -v $(pwd):/local_path -t fedora_for_fluka bash
 
-FROM fedora:30
+FROM fedora:31
 
 # Add default user
 RUN useradd -c 'Fluka user' -m -d /home/fluka -s /bin/bash fluka
