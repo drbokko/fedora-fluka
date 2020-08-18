@@ -31,8 +31,8 @@ RUN dnf install -y scipy findutils
 # Install flair from Vasilis's page
 # RUN dnf install -y http://www.fluka.org/flair/flair-2.3-0.noarch.rpm
 # RUN dnf install -y http://www.fluka.org/flair/flair-geoviewer-2.3-0.x86_64.rpm
-RUN dnf install -y http://flair.web.cern.ch/flair/download/flair-3.0-5.noarch.rpm
-RUN dnf install -y http://flair.web.cern.ch/flair/download/flair-geoviewer-3.0-5.x86_64.rpm
+RUN dnf install -y https://flair.web.cern.ch/flair/download/flair-3.1-2.noarch.rpm
+RUN dnf install -y https://flair.web.cern.ch/flair/download/flair-geoviewer-3.1-2.x86_64.rpm
 
 RUN dnf install -y htop grep procps-ng
 # One can now install fluka from the src https://www.fluka.org/packages/fluka2011.2c-linux-gfor64bitAA.tar.gz
