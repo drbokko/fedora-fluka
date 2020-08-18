@@ -4,11 +4,10 @@
 # dr.vittorio.boccone@ieee.org
 # vittorio.boccone@dectris.com
 
-fluka_version="2011-3.0"
+fluka_version="4-0.0"
 fluka_respin="Linux-gfor9"
 
 fluka_tarball="fluka-${fluka_version}.${fluka_respin}.x86_64.rpm"
-# fluka-2011-3.0.Linux-gfor9.x86_64.rpm
 
 fluka_package=$fluka_tarball
 USER_NAME=$(whoami)

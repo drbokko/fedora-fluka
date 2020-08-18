@@ -1,4 +1,4 @@
-# Customized Docked Fedora 27 for running Fluka
+# Customized Docked Fedora 31 for running Fluka
 # ========================================================
 # dr.vittorio.boccone@ieee.org
 # vittorio.boccone@dectris.com
