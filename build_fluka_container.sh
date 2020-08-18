@@ -1,5 +1,5 @@
 #!/bin/bash
-# Script to build a Customized Docked Fedora 30 for running Fluka
+# Script to build a Customized Docked Fedora 31 for running Fluka
 # ========================================================
 # dr.vittorio.boccone@ieee.org
 # vittorio.boccone@dectris.com
